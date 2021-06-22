@@ -1,0 +1,67 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por nombre"
+        [(ngModel)]="nombre"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="buscarNombre()"
+        >
+          Buscar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Lista de Productos</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let producto of productos; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActivarProducto(producto, i)"
+      >
+        {{ producto.nombre }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="productoActual">
+      <h4>Producto</h4>
+      <div>
+        <label><strong>Nombre:</strong></label> {{ productoActual.nombre }}
+      </div>
+      <div>
+        <label><strong>Descripción:</strong></label>
+        {{ productoActual.descripcion }}
+      </div>
+      <div>
+        <label><strong>Fecha de Fabricación:</strong></label>
+        {{ productoActual.fechaFabricacion | date }}
+      </div>
+      <div>
+        <label><strong>Número de Parte:</strong></label>
+        {{ productoActual.numeroParte }}
+      </div>
+      <div>
+        <label><strong>Comentarios:</strong></label>
+        {{ productoActual.comentarios }}
+      </div>
+
+      <a class="link-dark" routerLink="/productos/{{ productoActual.id }}">
+        Editar
+      </a>
+    </div>
+
+    <div *ngIf="!productoActual">
+      <br />
+      <p>Por favor seleccione un Producto...</p>
+    </div>
+  </div>
+</div>

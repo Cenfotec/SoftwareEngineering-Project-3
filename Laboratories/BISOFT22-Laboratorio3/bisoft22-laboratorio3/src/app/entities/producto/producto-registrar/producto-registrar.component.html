@@ -1,0 +1,71 @@
+<div style="width: 400px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Productos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="producto.nombre"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input
+          class="form-control"
+          id="descripcion"
+          required
+          [(ngModel)]="producto.descripcion"
+          name="descripcion"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="fechaFabricacion">Fecha de Fabricación</label>
+        <input
+          type="date"
+          class="form-control"
+          id="fechaFabricacion"
+          required
+          [(ngModel)]="producto.fechaFabricacion"
+          name="fechaFabricacion"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="numeroParte">Número de Parte</label>
+        <input
+          class="form-control"
+          id="numeroParte"
+          required
+          [(ngModel)]="producto.numeroParte"
+          name="numeroParte"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="comentarios">Comentarios</label>
+        <textarea
+          class="form-control"
+          id="comentarios"
+          required
+          [(ngModel)]="producto.comentarios"
+          name="comentarios"
+        ></textarea>
+      </div>
+
+      <button (click)="salvarProducto()" class="btn btn-success">Enviar</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Producto Agregado!</h4>
+      <button class="btn btn-success" (click)="nuevoProducto()">Agregar</button>
+    </div>
+  </div>
+</div>
+
+
